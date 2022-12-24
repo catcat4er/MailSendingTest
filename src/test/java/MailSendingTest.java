@@ -55,7 +55,7 @@ public class MailSendingTest {
             $("[title = 'Вставить ссылку']").click();
             $("[data-test-id = link]").setValue(github);
             $("[data-test-id = text]").setValue("Ссылка на работу в Гитхабе");
-            $("[data-test-id=save] .vkuiBut1ton__in").click();
+            $("[data-test-id=save] .vkuiButton__in").click();
             $(".vkuiButton__in").click();
         });
 
