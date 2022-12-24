@@ -7,7 +7,6 @@ import org.aeonbits.owner.Config;
 public interface InsertingText extends Config{
     String login();
     String password();
-
     String message();
 
 }
