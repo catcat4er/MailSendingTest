@@ -1,4 +1,4 @@
-import ConfigText.InsertingText;
+import ConfigText.InsertingMailData;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Owner;
@@ -15,7 +15,7 @@ import static io.qameta.allure.Allure.step;
 public class MailSendingTest {
 
     String BaseURL = ("https://mail.ru/");
-    InsertingText insText = ConfigFactory.create(InsertingText.class);
+    InsertingMailData insText = ConfigFactory.create(InsertingMailData.class);
 
     @Test
     public void MailSendingTestWithSteps() {
