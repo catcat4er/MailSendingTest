@@ -1,5 +1,6 @@
 import ConfigText.InsertingText;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Owner;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +14,7 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("Try to send the message")
 public class MailSendingTest {
 
-    String BaseURL = ("https://account.mail.ru/");
+    String BaseURL = ("https://mail.ru/");
     InsertingText insText = ConfigFactory.create(InsertingText.class);
 
     @Test
@@ -32,13 +33,26 @@ public class MailSendingTest {
         step("open mail.ru", () -> open(BaseURL));
 
         step("authorisation", () -> {
+            $("[data-testid=enter-mail-primary]").click();
+            Selenide.switchTo().frame($(".ag-popup__frame__layout__iframe"));
             $("[name=username]").setValue(login);
             $("[data-test-id=next-button]").click();
             $("[name=password]").setValue(password);
             $("[data-test-id=submit-button]").click();
+
         });
 
         sleep(3000); //знаю что слип это пошло, но сайт не реагирует на другие асерты.
+
+        step("closing popups if there is", () -> {
+            if($(".ph-project-promo-close-icon").exists()) {
+                $(".ph-project-promo-close-icon").click();
+            }
+            if($("[data-test-id='onboarding-button-start']").exists()){
+                $("[data-test-id='onboarding-button-start']").click();
+                $("[data-test-id='cross'] .base-0-2-1").click();
+            }
+        });
 
         step("check successful authorisation", () -> {
             $(".compose-button__wrapper .compose-button__txt").shouldHave(text("Написать письмо"));
