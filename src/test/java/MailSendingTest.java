@@ -30,7 +30,7 @@ public class MailSendingTest {
         String github = insText.github();
         String meta = insText.meta();
 
-        step("open mail.ru", () -> open(BaseURL));
+        step("open mail.ru", () -> open("https://mail.ru/"));
 
         step("authorisation", () -> {
             $("[data-testid=enter-mail-primary]").click();
