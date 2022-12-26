@@ -14,7 +14,7 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("Try to send the message")
 public class MailSendingTest {
 
-    String baseUrl = ("https://mail.ru");
+    String baseUrl = ("https://mail.ru/");
     InsertingMailData insText = ConfigFactory.create(InsertingMailData.class);
 
     @Test
@@ -30,7 +30,7 @@ public class MailSendingTest {
         String github = insText.github();
         String meta = insText.meta();
 
-        step("open mail.ru", () -> open("https://mail.ru"));
+        step("open mail.ru", () -> open(baseUrl));
 
         step("authorisation", () -> {
             $("[data-testid=enter-mail-primary]").click();
