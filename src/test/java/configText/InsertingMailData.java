@@ -1,4 +1,4 @@
-package ConfigText;
+package configText;
 
 
 import org.aeonbits.owner.Config;
