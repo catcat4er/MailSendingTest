@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("Try to send the message")
 public class MailSendingTest {
 
+    @Test
     void test1() {
         assertTrue(true);
     }
